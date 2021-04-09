@@ -18,6 +18,9 @@ function Student(name, korean, english, math, science) {
     this.print_info = function () {
         console.log(this.name + "의 총합 " + this.sum() + " 평균 : " + this.ave());
     }
+    //Student.prototype.print_info=function () {
+  //      console.log(this.name + "의 총합 " + this.sum() + " 평균 : " + this.ave());
+  //  }
 }
 
 let class1 = [];
