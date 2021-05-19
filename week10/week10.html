@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = new Array();
+        let a = [];
+        function Info(name, number) {
+            this.name = name;
+            this.number = number;
+        }
+
+        function submit_chk(myForm) {
+
+            let nameChack = /^[가-힣]{2,4}/;
+            let numberChack = /^(010)\d{8}$/;
+
+            let userName = document.f1.user_name.value;
+            let userNumber = document.f1.user_tel.value;
+
+            if (!nameChack.test(userName)) {
+                alert("3~4 글자의 한글 이름을 적어주세요.");
+                return false;
+            }
+            else if (!numberChack.test(userNumber)) {
+                alert("핸드폰 번호를 정확히 입력해주세요.");
+                return false;
+            }
+            else if (numberChack.test(userNumber) && nameChack.test(userName)) {
+                arr.push(new Info(userName, userNumber));
+                return false;
+                
+            }
+        }
+
+        function reset_chk(myForm) {
+            alert("가입 취소");
+        }
+        
+        function Btn1() {
+            const text=document.getElementById('text');
+            for (let i of arr) {
+                text.innerHTML+="<p>"+i.name+" "+i.number+"</p>";
+            }
+        }
+
+        function Btn2(){
+            text.innerHTML=" "
+        }
+    </script>
+</head>
+
+<body onload="document.f1.user_name.focus();">
+    <form action="#" method="POST" name="f1" onsubmit="return submit_chk(this);" onreset="return reset_chk(this);">
+
+        <fieldset>
+            <legend> 회원 가입 </legend>
+            <p>
+                <label for="user_name"> 이름 </label>
+                <input type="text" name="user_name" id="user_name" />
+            </p>
+            <p>
+                <label for="user_tel"> 연락처 </label>
+                <input type="text" name="user_tel" id="user_tel" />
+            </p>
+            <p>
+                <input type="submit" value="회원가입" />
+                <input type="reset" value="가입취소" />
+            </p>
+        </fieldset>
+
+    </form>
+
+    <button id="btn1" onclick=Btn1()>정보 출력</button>
+    <button id="btn2" onclick=Btn2()>내용 지움</button>
+    <div id="text"></div>
+</body>
+
+</html>
