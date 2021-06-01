@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script>
+        $(document).ready(function(){
+            $("#btn1").on("click",function(){
+                $('h1').slideUp(1000);
+            });
+            $("#btn2").on("click",function(){
+                $("h1").slideDown(1000);
+            });
+            $("#btn3").on("click",function(){
+                $("h1").slideToggle(1000);
+            });
+        });
+            
+        
+    </script> -->
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+
+            background-color: red;
+
+            position: relative;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+
+    <script>
+        var num=0;
+        function inputValue(){
+            num=document.getElementById('number').value;
+        }
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $(".box").animate({
+                    left:num,
+                    top:num
+                },1000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="number"> <button id="btn" onclick="inputValue()">버튼</button><br>
+    <div class="box"></div>
+    
+</body>
+
+</html>
